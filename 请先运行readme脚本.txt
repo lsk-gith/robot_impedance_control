@@ -1,0 +1,2 @@
+运行readme脚本，可以将ROCR6II_URDF_file文件夹、CAD_Model文件夹和work文件夹里面的文件和子文件夹添加到路径，
+运行removePath脚本，可以将上述文件夹和子文件夹从路径中删除。

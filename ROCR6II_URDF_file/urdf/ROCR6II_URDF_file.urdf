@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="ROCR6II_URDF_file">
+  <link name="world" />
+  <joint name="world_joint" type="fixed">
+    <parent link="world" />
+    <child link = "base_link" />
+    <origin xyz="0.0 0.0 0.0" rpy="3.1415926536 3.1415926536 0.0" />
+  </joint>
+  <link name="base"/>
+  <joint name="base_link-base_fixed_joint" type="fixed">
+	  <!-- NOTE: this rotation is only needed as long as base_link itself is
+				 not corrected wrt the real robot (ie: rotated over 180
+				 degrees)
+	  -->
+	  <origin xyz="0 0 0" rpy="0 0 -3.1415926536"/>
+	  <parent link="base_link"/>
+	  <child link="base"/>
+  </joint>
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="4.9125E-05 0.00039917 0.028159"
+        rpy="0 0 0" />
+      <mass
+        value="0.9133" />
+      <inertia
+        ixx="0.0010268"
+        ixy="-1.8231E-06"
+        ixz="1.1094E-06"
+        iyy="0.0010578"
+        iyz="5.9529E-06"
+        izz="0.001565" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROCR6II_URDF_file/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROCR6II_URDF_file/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="shoulder_link">
+    <inertial>
+      <origin
+        xyz="7.9174E-07 0.0037223 0.0030792"
+        rpy="0 0 0" />
+      <mass
+        value="6.7582" />
+      <inertia
+        ixx="0.013187"
+        ixy="5.4008E-08"
+        ixz="4.6922E-08"
+        iyy="0.012917"
+        iyz="0.00018276"
+        izz="0.0081221" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROCR6II_URDF_file/meshes/shoulder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROCR6II_URDF_file/meshes/shoulder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="shoulder_pan_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0.1215"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="shoulder_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.1416"
+      upper="3.1416"
+      effort="150"
+      velocity="30" />
+  </joint>
+  <link
+    name="upper_arm_link">
+    <inertial>
+      <origin
+        xyz="-5.4357E-07 0.0032767 0.12625"
+        rpy="0 0 0" />
+      <mass
+        value="12.877" />
+      <inertia
+        ixx="0.024695"
+        ixy="-8.2704E-09"
+        ixz="-6.8716E-08"
+        iyy="0.019038"
+        iyz="0.00066134"
+        izz="0.018496" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROCR6II_URDF_file/meshes/upper_arm_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROCR6II_URDF_file/meshes/upper_arm_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="shoulder_lift_joint"
+    type="revolute">
+    <origin
+      xyz="0 0.1225 0"
+      rpy="0 0 0" />
+    <parent
+      link="shoulder_link" />
+    <child
+      link="upper_arm_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.1416"
+      upper="3.1416"
+      effort="150"
+      velocity="30" />
+  </joint>
+  <link
+    name="forearm_link">
+    <inertial>
+      <origin
+        xyz="0.00014266 -0.0049203 0.20706"
+        rpy="0 0 0" />
+      <mass
+        value="4.7791" />
+      <inertia
+        ixx="0.0094222"
+        ixy="-1.1118E-05"
+        ixz="1.1672E-05"
+        iyy="0.0072962"
+        iyz="0.00022329"
+        izz="0.0052999" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROCR6II_URDF_file/meshes/forearm_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROCR6II_URDF_file/meshes/forearm_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="elbow_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.102 0.3"
+      rpy="0 0 0" />
+    <parent
+      link="upper_arm_link" />
+    <child
+      link="forearm_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.1416"
+      upper="3.1416"
+      effort="150"
+      velocity="30" />
+  </joint>
+  <link
+    name="wrist_1_link">
+    <inertial>
+      <origin
+        xyz="5.3079E-07 0.087296 -0.010609"
+        rpy="0 0 0" />
+      <mass
+        value="3.1072" />
+      <inertia
+        ixx="0.0040287"
+        ixy="-7.3158E-09"
+        ixz="-2.3481E-09"
+        iyy="0.0039406"
+        iyz="9.4145E-05"
+        izz="0.0018825" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROCR6II_URDF_file/meshes/wrist_1_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROCR6II_URDF_file/meshes/wrist_1_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wrist_1_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0.276"
+      rpy="0 0 0" />
+    <parent
+      link="forearm_link" />
+    <child
+      link="wrist_1_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.1416"
+      upper="3.1416"
+      effort="150"
+      velocity="30" />
+  </joint>
+  <link
+    name="wrist_2_link">
+    <inertial>
+      <origin
+        xyz="-5.306E-07 -0.010609 0.087296"
+        rpy="0 0 0" />
+      <mass
+        value="3.1072" />
+      <inertia
+        ixx="0.0040287"
+        ixy="2.3491E-09"
+        ixz="7.3E-09"
+        iyy="0.0018825"
+        iyz="9.4145E-05"
+        izz="0.0039406" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROCR6II_URDF_file/meshes/wrist_2_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROCR6II_URDF_file/meshes/wrist_2_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wrist_2_joint"
+    type="revolute">
+    <origin
+      xyz="0 0.09 0"
+      rpy="0 0 0" />
+    <parent
+      link="wrist_1_link" />
+    <child
+      link="wrist_2_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.1416"
+      upper="3.1416"
+      effort="150"
+      velocity="30" />
+  </joint>
+  <link
+    name="wrist_3_link">
+    <inertial>
+      <origin
+        xyz="-1.7174E-09 0.064961 2.5473E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.59141" />
+      <inertia
+        ixx="0.0002476"
+        ixy="-2.2015E-14"
+        ixz="1.3425E-10"
+        iyy="0.00040058"
+        iyz="4.9238E-06"
+        izz="0.00024889" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROCR6II_URDF_file/meshes/wrist_3_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROCR6II_URDF_file/meshes/wrist_3_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wrist_3_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0.09"
+      rpy="0 0 0" />
+    <parent
+      link="wrist_2_link" />
+    <child
+      link="wrist_3_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.1416"
+      upper="3.1416"
+      effort="150"
+      velocity="30" />
+  </joint>
+  
+      <!--new add content -->
+  <joint name="ee_fixed_joint" type="fixed">
+    <parent link="wrist_3_link"/>
+    <child link="ee_link"/>
+    <origin rpy="0.0 0.0 1.57079632679" xyz="0.0 0.090 0.0"/>
+  </joint>
+  <link name="ee_link">
+    <collision>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.01 0 0"/>
+    </collision>
+  </link>
+	
+      <!-- Frame coincident with all-zeros TCP on ROCR6II controller -->
+  <link name="tool0"/>
+  <joint name="wrist_3_link-tool0_fixed_joint" type="fixed">
+    <origin rpy="-1.57079632679 0 0" xyz="0 0.082 0"/>
+    <parent link="wrist_3_link"/>
+    <child link="tool0"/>
+  </joint>
+</robot>
